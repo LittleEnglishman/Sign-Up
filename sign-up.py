@@ -22,7 +22,7 @@ tickets = [
     Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False)
     ]
 #Images
-@route('/static/<filename>')
+@route('/image/<filename>')
 def server_static(filename):
 	return static_file(filename, root='./assets/images')
 
@@ -38,5 +38,5 @@ def index():
 	pass
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
-run(host='localhost', port=8080, debug=True)
-#run(host='0.0.0.0', port=8080, reloader= True, debug=True)
+#run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=8080, reloader= True, debug=True)
