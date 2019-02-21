@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	% include('shared/Header.html')
+	% include('shared/NavBar.html')
+	
+	<body class="">
+		<div class="row grey lighten-3">
+			<div class="col s12 center">CHECK IN </div>
+			<div class="col s4">Cute af</div>
+			<div class="col s4">Middle Cutie </div>
+			<div class="col s4">Sexy End Column </div>
+		</div>
+		
+		
+		
+		
+		<!--sad main container-->
+		<div class="container">
+			<h2 class="center"> Check In page </h2>
+			% for ticket in ticket_list:
+			 <div class="col s12 m7">
+				<h2 class="header">{{ticket.name}}</h2>
+				<div class="card horizontal">
+				  <div class="card-image">
+					<img src="image/cat.jpg">
+				  </div>
+				  <div class="card-stacked">
+					<div class="card-content">
+					  <p>I am a very simple card. I am good at containing small bits of information.</p>
+					</div>
+					<div class="card-action">
+					  <a href="#">{{ticket.email}} </a>
+					</div>
+					<div class="card-action">
+					  <a href="#">{{ticket.date_of_birth}} </a>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			% end
+			<p>Ohhhhhhhhh does this work</p>
+		</div>
+		<img src="image/cat.jpg">
+	</body>
+</html>

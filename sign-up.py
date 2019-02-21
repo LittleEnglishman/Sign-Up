@@ -19,7 +19,8 @@ tickets = [
     Ticket("Thomas John King", "tomking@email.exmail","19/07/2001", True),
     Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False),
     Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True),
-    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False)
+    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
+    Ticket('Dominick Rasmussen', 'email.eamil.com', '15/87/2345', False)
     ]
 #Images
 @route('/image/<filename>')
@@ -36,6 +37,16 @@ def server_static(filename):
 def index():
 	#need this function to attatch decorators above
 	pass
+
+
+
+#check-in page
+@route('/check-in')
+@view('check-in')
+
+def check_in():
+	data = dict (ticket_list = tickets)
+	return data
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
 #run(host='localhost', port=8080, debug=True)
