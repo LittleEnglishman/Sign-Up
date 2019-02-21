@@ -38,5 +38,5 @@ def index():
 	pass
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
-#run(host='localhost', port=8080, debug=True)
-run(host='0.0.0.0', port=8080, reloader= True, debug=True)
+run(host='localhost', port=8080, debug=True)
+#run(host='localhost', port=8080, reloader= True, debug=True)
