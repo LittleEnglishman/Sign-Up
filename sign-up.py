@@ -3,6 +3,8 @@ from itertools import count
 #Build Log
 #V1.1 Creation of file plus test data
 #V1.2 Creation of server functioanlity
+#V1.5.1 Added in ability to link custom CSS file
+
 
 class Ticket:
 	_ids = count(0)
@@ -26,6 +28,10 @@ tickets = [
 def server_static(filename):
 	return static_file(filename, root='./assets/images')
 
+#Code to be able to link custom css (this works)
+@route('/<filename>.css')
+def stylesheets(filename):
+    return static_file('{}.css'.format(filename), root='static')	
 	
 #Pages
 #1.2 Server functionality
