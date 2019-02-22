@@ -3,6 +3,9 @@ from itertools import count
 #Build Log
 #V1.1 Creation of file plus test data
 #V1.2 Creation of server functioanlity
+#V1.5 Added in form framework
+#V1.6 Added in ticket abililty/card
+#V1.6.1 Added in custom css functionality
 
 class Ticket:
 	_ids = count(0)
@@ -22,6 +25,8 @@ tickets = [
     Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
     Ticket('Dominick Rasmussen', 'email.eamil.com', '15/87/2345', False)
     ]
+
+
 #Images
 @route('/image/<filename>')
 def server_static(filename):
@@ -38,9 +43,12 @@ def index():
 	#need this function to attatch decorators above
 	pass
 
+#Code to be able to link custom css (this works) Ver1.6.1
+@route('/<filename>.css')
+def stylesheets(filename):
+    return static_file('{}.css'.format(filename), root='./assets')
 
-
-#check-in page
+#check-in page route V1.6
 @route('/check-in')
 @view('check-in')
 
@@ -49,5 +57,5 @@ def check_in():
 	return data
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
-#run(host='localhost', port=8080, debug=True)
-run(host='0.0.0.0', port=8080, reloader= True, debug=True)
+run(host='localhost', port=8080, debug=True)
+#run(host='0.0.0.0', port=8080, reloader= True, debug=True)
