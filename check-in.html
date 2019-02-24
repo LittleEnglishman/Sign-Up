@@ -18,29 +18,54 @@
 		<!--sad main container-->
 		<div class="container">
 			<h2 class="center"> Check In page </h2>
+			
+				
 			% for ticket in ticket_list:
-			 <div class="col s12 m7">
+			<div class="col s12 m7">
 				<h2 class="header">{{ticket.name}}</h2>
 				<div class="card horizontal">
-				  <div class="card-image">
-					<img src="image/cat.jpg">
-				  </div>
-				  <div class="card-stacked">
-					<div class="card-content">
-					  <p>I am a very simple card. I am good at containing small bits of information.</p>
+					
+					
+					<!-- User Image -->
+					<div class="card-image">
+					<img src="image/cat.jpg"> </img>
 					</div>
-					<div class="card-action">
-					  <a href="#">{{ticket.email}} </a>
+					
+					
+					<div class="card-stacked">
+						<div class="card-content">
+							<p>God Bless</p>
+						</div>
+						<div class="card-action">
+							<a href="#">{{ticket.email}} </a>
+						</div>
+						<div class="card-action">
+							<a href="#">{{ticket.date_of_birth}} </a>
+						</div>
+							% if ticket.check_in == True:
+							<div class="card-action">
+								<p> CHECKED IN </p>
+							</div>
+
+							% elif ticket.check_in == False:
+							<div class="card-action">
+								<p> NOT CHECKED IN </p>
+							</div>
+							% else:
+							<div class="card-action">
+								<p> ERROR: No Check In Status </p>
+							</div>
+							% end
 					</div>
-					<div class="card-action">
-					  <a href="#">{{ticket.date_of_birth}} </a>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			% end
-			<p>Ohhhhhhhhh does this work</p>
+				</div>	
+			</div>				
+			% end	
+
 		</div>
-		<img src="image/cat.jpg">
+
+			<p>Ohhhhhhhhh does this work </p>
+		
+		
+		<!--<img src="image/cat.jpg"> -->
 	</body>
 </html>
