@@ -19,7 +19,7 @@ class Ticket:
 		
 #Ticket test data
 tickets = [
-    Ticket("Thomas John King", "tomking@email.exmail","19/07/2001", True),
+    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", True),
     Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False),
     Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True),
     Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
@@ -43,10 +43,13 @@ def index():
 	#need this function to attatch decorators above
 	pass
 
+
 #Code to be able to link custom css (this works) Ver1.6.1
 @route('/<filename>.css')
 def stylesheets(filename):
     return static_file('{}.css'.format(filename), root='./assets')
+
+
 
 #check-in page route V1.6
 @route('/check-in')

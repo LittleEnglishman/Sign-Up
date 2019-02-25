@@ -4,7 +4,7 @@
 	% include('shared/Header.html')
 	% include('shared/NavBar.html')
 	
-	<body class="">
+	<body class="grey lighten-4">
 		<div class="row grey lighten-3">
 			<div class="col s12 center">CHECK IN </div>
 			<div class="col s4">Cute af</div>
@@ -16,46 +16,58 @@
 		
 		
 		<!--sad main container-->
-		<div class="container">
+		<div class="container white">
 			<h2 class="center"> Check In page </h2>
 			
-				
+			<!-- Card creation per each ticket in the defined list -->	
 			% for ticket in ticket_list:
-			<div class="col s12 m7">
-				<h2 class="header">{{ticket.name}}</h2>
+			<div class="col m4">
+				<h3 class="header">{{ticket.name}}</h2>
 				<div class="card horizontal">
 					
 					
 					<!-- User Image -->
 					<div class="card-image">
-					<img src="image/cat.jpg"> </img>
+					<img class="profile-pic" src="image/cat.jpg"> </img>
 					</div>
 					
 					
 					<div class="card-stacked">
+
+
 						<div class="card-content">
 							<p>God Bless</p>
 						</div>
+
+
 						<div class="card-action">
 							<a href="#">{{ticket.email}} </a>
 						</div>
+
+
 						<div class="card-action">
 							<a href="#">{{ticket.date_of_birth}} </a>
 						</div>
+
+
 							% if ticket.check_in == True:
 							<div class="card-action">
-								<p> CHECKED IN </p>
+								<!--<p> CHECKED IN </p> -->
+								<i class="material-icons icon-green">check_circle</i>
 							</div>
 
 							% elif ticket.check_in == False:
 							<div class="card-action">
-								<p> NOT CHECKED IN </p>
+								<!--<p> NOT CHECKED IN </p> -->
+								<i class="material-icons icon-red">check_circle_outline icon-red</i>
 							</div>
 							% else:
 							<div class="card-action">
 								<p> ERROR: No Check In Status </p>
 							</div>
 							% end
+
+
 					</div>
 				</div>	
 			</div>				
