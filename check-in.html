@@ -40,12 +40,12 @@
 						</div>
 
 
-						<div class="card-action">
+						<div class="card-content">
 							<a href="#">{{ticket.email}} </a>
 						</div>
 
 
-						<div class="card-action">
+						<div class="card-content">
 							<a href="#">{{ticket.date_of_birth}} </a>
 						</div>
 
@@ -56,15 +56,12 @@
 								<i class="material-icons icon-green">check_circle</i>
 							</div>
 
-							% elif ticket.check_in == False:
-							<div class="card-action">
-								<!--<p> NOT CHECKED IN </p> -->
-								<i class="material-icons icon-red">check_circle_outline icon-red</i>
-							</div>
 							% else:
 							<div class="card-action">
-								<p> ERROR: No Check In Status </p>
+								<!--<p> NOT CHECKED IN </p> -->
+								<a href="/check-in-success/{{ticket.id}}"><i class="material-icons icon-red">check_circle_outline</i> </a>
 							</div>
+
 							% end
 
 

@@ -19,7 +19,7 @@ class Ticket:
 		
 #Ticket test data
 tickets = [
-    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", True),
+    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", False),
     Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False),
     Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True),
     Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
@@ -38,7 +38,6 @@ def server_static(filename):
 #index page
 @route('/')
 @view('index')
-
 def index():
 	#need this function to attatch decorators above
 	pass
@@ -54,10 +53,25 @@ def stylesheets(filename):
 #check-in page route V1.6
 @route('/check-in')
 @view('check-in')
-
 def check_in():
 	data = dict (ticket_list = tickets)
 	return data
+
+#check in success page
+@route('/check-in-success/<ticket_id>')
+@view('check-in-success')
+def check_in_success(ticket_id):
+	#need this function to attatch decorators above
+	ticket_id = int(ticket_id)
+	found_ticket = None
+	for ticket in tickets:
+		if ticket.id == ticket_id:
+			found_ticket = ticket
+			break
+	data = dict (ticket = found_ticket)
+	found_ticket.check_in = True
+	return data
+	
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
 run(host='localhost', port=8080, debug=True)
