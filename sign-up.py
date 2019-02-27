@@ -6,7 +6,7 @@ from itertools import count
 #V1.5 Added in form framework
 #V1.6 Added in ticket abililty/card
 #V1.6.1 Added in custom css functionality
-
+#V1.6.6 Created sell-ticket / success pages to create sell ticket system
 class Ticket:
 	_ids = count(0)
 	
@@ -71,6 +71,19 @@ def check_in_success(ticket_id):
 	data = dict (ticket = found_ticket)
 	found_ticket.check_in = True
 	return data
+	
+#sign up page with form etc Ver1.6.5
+@route('/sell-ticket')
+@view('sell-ticket')
+def sign_up():
+	pass
+	
+@route('/sell-ticket-success', method="POST")
+@view('sell-ticket-success')
+def sign_up_success():
+	pass
+	
+
 	
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
