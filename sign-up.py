@@ -3,7 +3,10 @@ from itertools import count
 #Build Log
 #V1.1 Creation of file plus test data
 #V1.2 Creation of server functioanlity
-
+#V1.5 Added in form framework
+#V1.6 Added in ticket abililty/card
+#V1.6.1 Added in custom css functionality
+#V1.6.6 Created sell-ticket / success pages to create sell ticket system
 class Ticket:
 	_ids = count(0)
 	
@@ -16,13 +19,16 @@ class Ticket:
 		
 #Ticket test data
 tickets = [
-    Ticket("Thomas John King", "tomking@email.exmail","19/07/2001", True),
+    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", False),
     Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False),
     Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True),
-    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False)
+    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
+    Ticket('Dominick Rasmussen', 'email.eamil.com', '15/87/2345', False)
     ]
+
+
 #Images
-@route('/static/<filename>')
+@route('/image/<filename>')
 def server_static(filename):
 	return static_file(filename, root='./assets/images')
 
@@ -32,10 +38,59 @@ def server_static(filename):
 #index page
 @route('/')
 @view('index')
-
 def index():
 	#need this function to attatch decorators above
 	pass
+
+
+#Code to be able to link custom css (this works) Ver1.6.1
+@route('/<filename>.css')
+def stylesheets(filename):
+    return static_file('{}.css'.format(filename), root='./assets')
+
+
+
+#check-in page route V1.6
+@route('/check-in')
+@view('check-in')
+def check_in():
+	data = dict (ticket_list = tickets)
+	return data
+
+#check in success page
+@route('/check-in-success/<ticket_id>')
+@view('check-in-success')
+def check_in_success(ticket_id):
+	#need this function to attatch decorators above
+	ticket_id = int(ticket_id)
+	found_ticket = None
+	for ticket in tickets:
+		if ticket.id == ticket_id:
+			found_ticket = ticket
+			break
+	data = dict (ticket = found_ticket)
+	found_ticket.check_in = True
+	return data
+	
+#sign up page with form etc Ver1.6.5
+@route('/sell-ticket')
+@view('sell-ticket')
+def sign_up():
+	pass
+	
+@route('/sell-ticket-success', method="POST")
+@view('sell-ticket-success')
+def sign_up_success():
+	name = request.forms.get("name")
+	email = request.forms.get("email")
+	date_of_birth = request.forms.get("dob")
+	
+	new_ticket = Ticket(name, email, date_of_birth, False)
+	tickets.append(new_ticket)
+	
+	
+
+	
 
 #reloader = True breaks the code? Only at home PC though???? apparantly is a server issue
 run(host='localhost', port=8080, debug=True)
