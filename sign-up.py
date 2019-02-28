@@ -81,7 +81,13 @@ def sign_up():
 @route('/sell-ticket-success', method="POST")
 @view('sell-ticket-success')
 def sign_up_success():
-	pass
+	name = request.forms.get("name")
+	email = request.forms.get("email")
+	date_of_birth = request.forms.get("dob")
+	
+	new_ticket = Ticket(name, email, date_of_birth, False)
+	tickets.append(new_ticket)
+	
 	
 
 	
