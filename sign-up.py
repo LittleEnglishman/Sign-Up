@@ -7,23 +7,28 @@ from itertools import count
 #V1.6 Added in ticket abililty/card
 #V1.6.1 Added in custom css functionality
 #V1.6.6 Created sell-ticket / success pages to create sell ticket system
+
+
 class Ticket:
 	_ids = count(0)
 	
-	def __init__(self,name,email,date_of_birth,check_in):
+	def __init__(self,name,email,date_of_birth,check_in, image):
 		self.id = next(self._ids)
 		self.name = name
 		self.email = email
 		self.date_of_birth = date_of_birth
 		self.check_in = check_in
-		
+		self.image = image
+
+PLACEHOLDER = "image/cat.jpg"
+
 #Ticket test data
 tickets = [
-    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", False),
-    Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False),
-    Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True),
-    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False),
-    Ticket('Dominick Rasmussen', 'email.eamil.com', '15/87/2345', False)
+    Ticket("Tommy King", "tomking@email.exmail","19/07/2001", False, PLACEHOLDER),
+    Ticket("Moses Wescombe", "moseswescombe@email.email", "16/11/2007", False, PLACEHOLDER),
+    Ticket("Jeremy Roberts", "jerryisdope.com", "20/02/2009", True, PLACEHOLDER),
+    Ticket('Ariana Grande', "iwishihasheremail.gamil.com", "14/08/1998", False, PLACEHOLDER),
+    Ticket('Dominick Rasmussen', 'email.eamil.com', '15/87/2345', False, PLACEHOLDER)
     ]
 
 
@@ -46,7 +51,7 @@ def index():
 #Code to be able to link custom css (this works) Ver1.6.1
 @route('/<filename>.css')
 def stylesheets(filename):
-    return static_file('{}.css'.format(filename), root='./assets')
+	return static_file('{}.css'.format(filename), root='./assets')
 
 
 
@@ -85,7 +90,7 @@ def sign_up_success():
 	email = request.forms.get("email")
 	date_of_birth = request.forms.get("dob")
 	
-	new_ticket = Ticket(name, email, date_of_birth, False)
+	new_ticket = Ticket(name, email, date_of_birth, False, PLACEHOLDER)
 	tickets.append(new_ticket)
 	
 	
